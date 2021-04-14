@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if posts %}
+      {% for post in posts %}
+          <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                <small class="text-muted">{{ post.date }}</small>
+              </div>
+              <h3><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.name }}</a><p>{{ post.phone_number }}</p></h3>
+              <p class="article-content">{{ post.order }}</p>
+              <p class="article-content">{{ post.post_code }}</p>
+              <p><small class="text-muted">Order taken on: {{ post.date_posted.strftime('%d/%m/%Y') }}</small></p>
+            </div>
+          </article>
+      {% endfor %}
+    {% else %}
+      <p>Very quiet so far...</p>
+    {% endif %}
+{% endblock content %}
+
+
+
+# get desired posts (add your filters etc)
+posts = session.query(Post).order_by(Post.time)
+
+# create a dictionary, where key is the date(-only), and values are the posts of that day
+from collections import defaultdict
+grouped = defaultdict(list)
+for post in posts:
+    dat = post.time.date()
+    grouped[dat].append(post)
+
+# iterate over new grouped structure
+for dat, posts in sorted(grouped.items()):
+    print dat
+    for post in posts:
+        print '  ', post

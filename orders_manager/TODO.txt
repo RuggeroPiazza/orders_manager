@@ -1,0 +1,12 @@
+TODO:
+- finish to implement the group by data
+    -added pagination element to move to yesterday or tomorrow
+    -need to add DatePicker to movo to a specific date (check https://www.youtube.com/watch?v=jAdFZa6KZNE)
+    -DatePicker has to send the date to a specific view that redirect to the page of the date selected
+     if there aren't any order for that specific date, the page will be empty.
+
+- style of the accordion in the home page
+- about page with the link to my github page
+- sidebar:
+    create the template for search and useful contacts
+    implement the search engine
