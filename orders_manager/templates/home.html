@@ -37,7 +37,7 @@
         </article>
       {% endfor %}
     {% else %}
-      <h2>No orders recorded so far.</h2>
+      <h2>{{ today }} <br> No orders recorded so far.</h2>
       <p>To add a new order, select the voice "New Order" on the navigation bar above.</p>
     {% endif %}
     {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
