@@ -40,7 +40,10 @@ days_per_month = {1: 31,  # {month : num of days, ... }
                   12: 31}
 
 
-def next_day(day, month, year):
+def next_day(date):  # function takes a datetime object
+    day = date.day
+    month = date.month
+    year = date.year
     if day < days_per_month[month]:
         day += 1
     else:
@@ -55,7 +58,10 @@ def next_day(day, month, year):
     return str_date
 
 
-def prev_day(day, month, year):
+def prev_day(date):  # function takes a datetime object
+    day = date.day
+    month = date.month
+    year = date.year
     if day > 1:
         day -= 1
     else:

@@ -1,7 +1,6 @@
 from flask import render_template, request, Blueprint
 from flask_login import login_required
 from orders_manager.models import Post
-from orders_manager.users.utils import next_day, days_per_month
 from datetime import date
 
 main = Blueprint('main', __name__)
