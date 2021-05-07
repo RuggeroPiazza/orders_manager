@@ -1,6 +1,6 @@
 import os
 import secrets
-from datetime import datetime
+from datetime import datetime, timedelta
 from PIL import Image
 from flask import current_app
 
@@ -26,52 +26,11 @@ def change_date_format(date):
     return dt
 
 
-days_per_month = {1: 31,  # {month : num of days, ... }
-                  2: 30,
-                  3: 31,
-                  4: 30,
-                  5: 31,
-                  6: 30,
-                  7: 31,
-                  8: 31,
-                  9: 30,
-                  10: 31,
-                  11: 30,
-                  12: 31}
-
-
 def next_day(date):  # function takes a datetime object
-    day = date.day
-    month = date.month
-    year = date.year
-    if day < days_per_month[month]:
-        day += 1
-    else:
-        day = 1
-        if month < 12:
-            month += 1
-        else:
-            month = 1
-            year += 1
-
-    str_date = str(day) + '-' + str(month) + '-' + str(year)
-    return str_date
+    date = date + timedelta(days=1)
+    return date.strftime('%d-%m-%Y')
 
 
 def prev_day(date):  # function takes a datetime object
-    day = date.day
-    month = date.month
-    year = date.year
-    if day > 1:
-        day -= 1
-    else:
-        if month > 1:
-            month -= 1
-            day = days_per_month[month]
-        else:
-            day = 31
-            month = 12
-            year -= 1
-
-    str_date = str(day) + '-' + str(month) + '-' + str(year)
-    return str_date
+    date = date - timedelta(days=1)
+    return date.strftime('%d-%m-%Y')

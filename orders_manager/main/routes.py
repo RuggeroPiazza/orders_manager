@@ -15,9 +15,6 @@ def home(view_date):
     today = session.get('date')
     page = request.args.get('page', 1, type=int)
     posts = Post.query.filter_by(date=today).paginate(page=page, per_page=5)
-    # print(today)
-    # for post in posts.items:
-    #     print(post)
 
     return render_template('home.html', posts=posts, date=today)
 
