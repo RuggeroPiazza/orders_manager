@@ -22,7 +22,7 @@ def save_picture(form_picture):
 
 def change_date_format(date):
     str_date = str(date)
-    dt = datetime.strptime(str_date, '%Y-%m-%d').strftime('%d/%m/%Y')
+    dt = datetime.strptime(str_date, '%Y-%m-%d').strftime('%d-%m-%Y')
     return dt
 
 
@@ -54,7 +54,7 @@ def next_day(date):  # function takes a datetime object
             month = 1
             year += 1
 
-    str_date = str(day) + '/' + str(month) + '/' + str(year)
+    str_date = str(day) + '-' + str(month) + '-' + str(year)
     return str_date
 
 
@@ -73,5 +73,5 @@ def prev_day(date):  # function takes a datetime object
             month = 12
             year -= 1
 
-    str_date = str(day) + '/' + str(month) + '/' + str(year)
+    str_date = str(day) + '-' + str(month) + '-' + str(year)
     return str_date
